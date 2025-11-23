@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="" />
+    <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +31,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -31,11 +48,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ApiGatewayApplication.executor": "Run",
     "Application.AuctionServiceApplication.executor": "Run",
     "Application.CatalogueServiceApplication.executor": "Run",
     "Application.PaymentServiceApplication.executor": "Run",
+    "Application.ServiceRegistryApplication.executor": "Run",
     "Application.UserServiceApplication.executor": "Run",
     "Maven.PaymentServiceApplication.executor": "Run",
+    "Maven.api-gateway [clean].executor": "Run",
     "Maven.auction-service [clean,install...].executor": "Run",
     "Maven.auction-service [install,--non-recursive].executor": "Run",
     "Maven.catalogue-service [clean,install...].executor": "Run",
@@ -45,11 +65,12 @@
     "Maven.user-service [clean,install...].executor": "Run",
     "Maven.user-service [install,--non-recursive].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/vikramjeetsingh/EECS4413-F25-Project/eecs4413-microservices-auction-project",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
   }
 }]]></component>
@@ -61,6 +82,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.UserServiceApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.backendboys.apigateway.ApiGatewayApplication" />
+      <module name="api-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.backendboys.apigateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuctionServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.backendboys.auctionservice.AuctionServiceApplication" />
       <module name="auction-service" />
@@ -74,12 +108,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CatalogueServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.backendboys.catalogueservice.CatalogueServiceApplication" />
-      <module name="catalogue-service" />
+    <configuration name="PaymentServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.backendboys.paymentservice.PaymentServiceApplication" />
+      <module name="payment-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.backendboys.catalogueservice.*" />
+          <option name="PATTERN" value="ca.backendboys.paymentservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -87,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PaymentServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.backendboys.paymentservice.PaymentServiceApplication" />
-      <module name="payment-service" />
+    <configuration name="ServiceRegistryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.backendboys.serviceregistry.ServiceRegistryApplication" />
+      <module name="service-registry" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.backendboys.paymentservice.*" />
+          <option name="PATTERN" value="ca.backendboys.serviceregistry.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,9 +150,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.UserServiceApplication" />
-        <item itemvalue="Application.PaymentServiceApplication" />
-        <item itemvalue="Application.CatalogueServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.AuctionServiceApplication" />
+        <item itemvalue="Application.ServiceRegistryApplication" />
+        <item itemvalue="Application.PaymentServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -142,5 +177,16 @@
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
     <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
