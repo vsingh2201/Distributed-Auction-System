@@ -1,0 +1,79 @@
+version: "3.9"
+
+services:
+  service-registry:
+    build: ./service-registry
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    depends_on:
+      - service-registry
+      - auction-service
+      - catalogue-service
+      - payment-service
+      - user-service
+    ports:
+      - "9191:9191"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  auction-service:
+    build: ./auction-service
+    container_name: auction-service
+    depends_on:
+      - service-registry
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    volumes:
+      - auction_data:/data  # SQLite file
+    # internal port only; no need to publish if only gateway calls it
+    expose:
+      - "8080"
+
+  catalogue-service:
+    build: ./catalogue-service
+    container_name: catalogue-service
+    depends_on:
+      - service-registry
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    volumes:
+      - catalogue_data:/data
+    expose:
+      - "8081"
+
+  payment-service:
+    build: ./payment-service
+    container_name: payment-service
+    depends_on:
+      - service-registry
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    volumes:
+      - payment_data:/data
+    expose:
+      - "8082"
+
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    depends_on:
+      - service-registry
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    volumes:
+      - user_data:/data
+    expose:
+      - "8084"
+
+volumes:
+  auction_data:
+  catalogue_data:
+  payment_data:
+  user_data:
