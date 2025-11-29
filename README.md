@@ -1,6 +1,30 @@
 # EECS 4413 Team 8 Auction Project
 
-## To Run a Single Microservice using Maven
+## To Run the Project Using Docker
+First, make sure there is a jar file inside the target folder of each service.<br>
+Run the following command at the project root to generate jar files for each service.
+```bash
+  mvn clean package -DskipTests
+```
+
+Use docker compose build to create images
+```bash
+  docker compose build
+```
+Use docker compose up to run the images in containers
+```bash
+  docker compose up
+```
+
+To run the containers in detached mode
+```bash
+  docker compose up -d
+```
+To stop and remove the containers
+```bash
+  docker compose down
+```
+## To Run a Single Microservice using Maven (without Docker)
 
 Go to the microservice folder (for example, auction-service)
 
