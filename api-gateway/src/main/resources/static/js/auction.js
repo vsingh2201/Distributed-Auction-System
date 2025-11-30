@@ -53,25 +53,36 @@
     }
 
     function renderState(state) {
-      const price = state.currentPrice ?? state.startPrice ?? "-";
-      priceEl.textContent = price;
-      hbEl.textContent = state.highestBidderId ?? "-";
+      // 🔄 use AuctionView.currentPrice (no startPrice here)
+      const price = state.currentPrice != null ? state.currentPrice : "-";
+      priceEl.textContent = price === "-" ? "$-" : `$${price}`;
 
-      startCountdown(state.endsAt, state.status);
-      if (state.status && state.status !== "ACTIVE") {
+      hbEl.textContent = state.highestBidderId != null ? state.highestBidderId : "-";
+
+      // 🔄 use AuctionView.endTime
+      startCountdown(state.endTime, state.status);
+      if (state.status && state.status !== "ACTIVE" && state.status !== "OPEN") {
         stopPolling();
       }
+
     }
 
-    function startCountdown(endsAt, status) {
+    function startCountdown(endTimeIso, status) {
       if (countdownInterval) clearInterval(countdownInterval);
 
-      if (!endsAt || (status && status !== "ACTIVE")) {
+      if (!endTimeIso) {
         countdownEl.textContent = "Auction ended";
         return;
       }
 
-      const endTime = new Date(endsAt).getTime();
+      // consider OPEN and ACTIVE as running auctions
+      const isActive = !status || status === "ACTIVE" || status === "OPEN";
+      if (!isActive) {
+        countdownEl.textContent = "Auction ended";
+        return;
+      }
+
+      const endTime = new Date(endTimeIso).getTime();
 
       const tick = () => {
         const diff = endTime - Date.now();
@@ -88,6 +99,7 @@
       tick();
       countdownInterval = setInterval(tick, 1000);
     }
+
 
     function startPolling() {
       if (pollInterval) clearInterval(pollInterval);

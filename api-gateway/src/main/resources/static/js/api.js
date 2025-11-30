@@ -93,11 +93,16 @@ const api = {
   state: (itemId) =>
     apiFetch(`${AUCTION_BASE}/auctions/${itemId}`),
 
-  bid: (itemId, userId, amount) =>
-    apiFetch(`${AUCTION_BASE}/auctions/${itemId}/bid`, {
-      method: "POST",
-      body: JSON.stringify({ userId, amount: Number(amount) }),
-    }),
+ // place a bid on an item
+ bid: (itemId, userId, amount) =>
+   apiFetch(`${AUCTION_BASE}/auctions/${itemId}/bid`, {
+     method: "POST",
+     body: JSON.stringify({
+       bidderId: Number(userId),      // must be bidderId
+       amount: Number(amount),        // make it a number
+     }),
+   }),
+
 
   // UC5/6: Payment / Receipt ----------------------------------------
   pay: (payload) =>

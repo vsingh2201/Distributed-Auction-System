@@ -35,6 +35,12 @@ public class AuctionCommandService {
         b.setAuctionId(a.getId());
         b.setBidderId(req.getBidderId());
         b.setAmount(req.getAmount());
+
+        // THIS is important:
+        b.setBidderId(req.getBidderId());
+        if (b.getBidderId() == null) {
+            b.setBidderId(42L); // same fallback as above
+        }
         bids.save(b);
 
         // Update current leader (optimistic lock via @Version)

@@ -9,7 +9,7 @@ INSERT INTO auctions (
   item_id, seller_id, start_price, current_price, highest_bidder_id,
   status, start_time, end_time, version
 ) VALUES (
-  100, 7, 500, 500, NULL,
+  1, 7, 500, 500, NULL,
   'OPEN', DATETIME('now','-5 minutes'), DATETIME('now','+15 minutes'), 0
 );
 
@@ -20,7 +20,7 @@ INSERT INTO auctions (
   item_id, seller_id, start_price, current_price, highest_bidder_id,
   status, start_time, end_time, version
 ) VALUES (
-  101, 8, 600, 750, 42,
+  2, 8, 600, 750, 42,
   'OPEN', DATETIME('now','-30 minutes'), DATETIME('now','+5 minutes'), 0
 );
 
@@ -44,7 +44,7 @@ INSERT INTO auctions (
   item_id, seller_id, start_price, current_price, highest_bidder_id,
   status, start_time, end_time, version
 ) VALUES (
-  102, 9, 1000, 1300, 55,
+  3, 9, 1000, 1300, 55,
   'ENDED', DATETIME('now','-90 minutes'), DATETIME('now','-10 minutes'), 0
 );
 
@@ -68,7 +68,7 @@ INSERT INTO auctions (
   item_id, seller_id, start_price, current_price, highest_bidder_id,
   status, start_time, end_time, version
 ) VALUES (
-  103, 10, 50, 50, NULL,
+  4, 10, 50, 50, NULL,
   'OPEN', DATETIME('now','-1 minutes'), DATETIME('now','+1 minutes'), 0
 );
 
@@ -79,7 +79,7 @@ INSERT INTO auctions (
   item_id, seller_id, start_price, current_price, highest_bidder_id,
   status, start_time, end_time, version
 ) VALUES (
-  104, 11, 200, 200, NULL,
+  5, 11, 200, 200, NULL,
   'PENDING', DATETIME('now'), DATETIME('now','+30 minutes'), 0
 );
 
@@ -90,6 +90,6 @@ INSERT INTO auctions (
   item_id, seller_id, start_price, current_price, highest_bidder_id,
   status, start_time, end_time, version
 ) VALUES (
-  105, 12, 300, 300, NULL,
+  6, 12, 300, 300, NULL,
   'CANCELLED', DATETIME('now','-10 minutes'), DATETIME('now','+20 minutes'), 0
 );

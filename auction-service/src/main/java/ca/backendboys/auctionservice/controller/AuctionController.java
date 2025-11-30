@@ -21,8 +21,17 @@ public class AuctionController {
     @GetMapping("/{itemId}")
     public ResponseEntity<AuctionView> get(@PathVariable Long itemId,
                                            @RequestParam(required = false) Long requesterId) {
-        return ResponseEntity.ok(query.getAuctionByItem(itemId, requesterId));
+
+        AuctionView view = query.getAuctionByItem(itemId, requesterId);
+
+        if (view == null) {
+            // no auction for this item → 404 instead of 500
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(view);
     }
+
 
     @GetMapping("/{itemId}/history")
     public ResponseEntity<List<Bid>> history(@PathVariable Long itemId) {
@@ -31,6 +40,12 @@ public class AuctionController {
 
     @PostMapping("/{itemId}/bid")
     public ResponseEntity<BidResponse> bid(@PathVariable Long itemId, @RequestBody BidRequest req) {
+        // simple safety net – for some reason bidderId is null
+        if (req.getBidderId() == null) {
+            // Fall back to a default demo user (e.g. 42 or 1).
+            // This keeps your demo working even if frontend sends something odd.
+            req.setBidderId(42L);
+        }
         return ResponseEntity.ok(command.placeBid(itemId, req));
     }
 

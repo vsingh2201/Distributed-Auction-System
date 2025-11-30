@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/bid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/catalogue.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/forgot-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/password.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/catalogue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/ca/backendboys/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/ca/backendboys/userservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/bid.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/bid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/catalogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/catalogue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +91,7 @@
       <recent name="$PROJECT_DIR$/auction-service/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UserServiceApplication">
+  <component name="RunManager" selected="Application.ServiceRegistryApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.backendboys.apigateway.ApiGatewayApplication" />
       <module name="api-gateway" />
@@ -122,12 +118,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PaymentServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.backendboys.paymentservice.PaymentServiceApplication" />
-      <module name="payment-service" />
+    <configuration name="CatalogueServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.backendboys.catalogueservice.CatalogueServiceApplication" />
+      <module name="catalogue-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.backendboys.paymentservice.*" />
+          <option name="PATTERN" value="ca.backendboys.catalogueservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -163,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AuctionServiceApplication" />
+        <item itemvalue="Application.CatalogueServiceApplication" />
         <item itemvalue="Application.UserServiceApplication" />
         <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.ServiceRegistryApplication" />
-        <item itemvalue="Application.PaymentServiceApplication" />
-        <item itemvalue="Application.AuctionServiceApplication" />
       </list>
     </recent_temporary>
   </component>
