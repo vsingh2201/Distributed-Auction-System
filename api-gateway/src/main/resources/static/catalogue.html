@@ -1,92 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"><title>Catalogue</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body onload="requireLogin()">
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="catalogue.html">Auction</a>
+  <head>
+    <meta charset="utf-8" />
+    <title>Catalogue</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body onload="requireLogin()">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="catalogue.html"
+          ><img
+            src="images/logo-transparent.png"
+            alt="Auction Logo"
+            height="40"
+        /></a>
         <div class="d-flex gap-2">
-            <a class="btn btn-outline-primary btn-sm" href="upload-item.html">Upload Item</a>
-            <a class="btn btn-outline-secondary btn-sm" href="index.html" onclick="localStorage.clear()">Logout</a>
+          <a class="btn btn-outline-primary btn-sm" href="upload-item.html"
+            >Upload Item</a
+          >
+          <a
+            class="btn btn-outline-secondary btn-sm"
+            href="index.html"
+            onclick="localStorage.clear()"
+            >Logout</a
+          >
         </div>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<div class="container">
-    <div class="card shadow-sm">
+    <div class="container">
+      <div class="card shadow-sm">
         <div class="card-body">
-            <div class="row g-2 align-items-center mb-3">
-                <div class="col-sm-8">
-                    <input id="q" class="form-control" placeholder="Search items...">
-                </div>
-                <div class="col-sm-4 text-sm-end">
-                    <button id="searchBtn" class="btn btn-primary">Search</button>
-                </div>
+          <div class="row g-2 align-items-center mb-3">
+            <div class="col-sm-8">
+              <input
+                id="q"
+                class="form-control"
+                placeholder="Search items..."
+              />
             </div>
-
-            <div class="table-responsive">
-                <table class="table table-hover align-middle">
-                    <thead class="table-light">
-                    <tr>
-                        <th>Name</th><th class="text-end">Price</th><th>Ends At</th><th></th>
-                    </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    <tr><td colspan="4" class="text-muted">Type a keyword and click Search.</td></tr>
-                    </tbody>
-                </table>
+            <div class="col-sm-4 text-sm-end">
+              <button id="searchBtn" class="btn btn-primary">Search</button>
             </div>
+          </div>
 
-            <div id="error" class="alert alert-danger d-none"></div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Name</th>
+                  <th class="text-end">Price</th>
+                  <th>Ends At</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <tr>
+                  <td colspan="4" class="text-muted">
+                    Type a keyword and click Search.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="error" class="alert alert-danger d-none"></div>
         </div>
+      </div>
     </div>
-</div>
 
-<script src="js/api.js"></script>
-<script>
-    const tbody = document.getElementById("tbody");
-    const error = document.getElementById("error");
+    <script src="js/api.js"></script>
+    <script>
+      const tbody = document.getElementById("tbody");
+      const error = document.getElementById("error");
 
-    async function load() {
-      error.classList.add('d-none');
-      tbody.innerHTML = `<tr><td colspan="4"><div class="text-center py-3">
+      async function load() {
+        error.classList.add("d-none");
+        tbody.innerHTML = `<tr><td colspan="4"><div class="text-center py-3">
         <div class="spinner-border" role="status"></div>
         <span class="ms-2">Loading...</span>
       </div></td></tr>`;
-      try {
-        const items = await api.search(q.value.trim());
-        if (!items.length) {
-          tbody.innerHTML = `<tr><td colspan="4" class="text-muted">No items found</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = "";
-        items.forEach(it => {
-          const price = (it.currentPrice ?? it.startPrice ?? "-");
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${it.name || ("Item " + it.itemId)}</td>
+        try {
+          const items = await api.search(q.value.trim());
+          if (!items.length) {
+            tbody.innerHTML = `<tr><td colspan="4" class="text-muted">No items found</td></tr>`;
+            return;
+          }
+          tbody.innerHTML = "";
+          items.forEach((it) => {
+            const price = it.currentPrice ?? it.startPrice ?? "-";
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${it.name || "Item " + it.itemId}</td>
             <td class="text-end">$${price}</td>
             <td>${it.endsAt || "-"}</td>
             <td class="text-end">
-              <a class="btn btn-sm btn-outline-primary" href="bid.html?itemId=${it.itemId}">Bid</a>
+              <a class="btn btn-sm btn-outline-primary" href="bid.html?itemId=${
+                it.itemId
+              }">Bid</a>
             </td>`;
-          tbody.appendChild(row);
-        });
-      } catch (e) {
-        error.textContent = e.message || "Failed to load catalogue";
-        error.classList.remove('d-none');
-        tbody.innerHTML = `<tr><td colspan="4" class="text-danger">Error</td></tr>`;
+            tbody.appendChild(row);
+          });
+        } catch (e) {
+          error.textContent = e.message || "Failed to load catalogue";
+          error.classList.remove("d-none");
+          tbody.innerHTML = `<tr><td colspan="4" class="text-danger">Error</td></tr>`;
+        }
       }
-    }
-    document.getElementById("searchBtn").onclick = load;
-</script>
-<script src="js/api.js"></script>
-<script src="js/catalogue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+      document.getElementById("searchBtn").onclick = load;
+    </script>
+    <script src="js/api.js"></script>
+    <script src="js/catalogue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
