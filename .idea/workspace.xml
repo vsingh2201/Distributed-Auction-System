@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/receipt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/receipt.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction-item.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/upload-item.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/payment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,8 +155,8 @@
       <list>
         <item itemvalue="Application.PaymentServiceApplication" />
         <item itemvalue="Application.AuctionServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.CatalogueServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.UserServiceApplication" />
       </list>
     </recent_temporary>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Auction – Upload Item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-light">
+
+<!-- Top navbar (same style as other pages) -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="catalogue.html"
+        ><img
+                src="images/logo-transparent.png"
+                alt="Auction Logo"
+                height="40"
+        /></a>
+        <div class="ms-auto d-flex gap-2">
+            <a class="btn btn-outline-primary btn-sm" href="catalogue.html"
+            >Catalogue</a
+            >
+            <a
+                    class="btn btn-outline-secondary btn-sm"
+                    href="index.html"
+                    onclick="localStorage.clear()"
+            >Logout</a
+            >
+        </div>
+    </div>
+</nav>
+
+
+<main class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <h1 class="mb-4">Upload Auction Item</h1>
+            <p class="text-muted mb-4">
+                As a seller, upload information about the item you want to auction.
+                Include the description, auction type (Forward), duration, and starting bid price.
+            </p>
+
+            <!-- Alerts -->
+            <div id="alertError" class="alert alert-danger d-none" role="alert"></div>
+            <div id="alertSuccess" class="alert alert-success d-none" role="alert"></div>
+
+            <!-- Seller info -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Seller</h5>
+                    <div class="row mb-2">
+                        <div class="col-sm-4 text-muted">Logged in as</div>
+                        <div class="col-sm-8" id="sellerEmail">–</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload form -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Auction item details</h5>
+
+                    <form id="auctionItemForm" novalidate>
+                        <!-- Item name -->
+                        <div class="mb-3">
+                            <label for="itemName" class="form-label">Item name</label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="itemName"
+                                    required
+                            />
+                            <div class="invalid-feedback">Please enter the item name.</div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="itemDescription" class="form-label">Description</label>
+                            <textarea
+                                    class="form-control"
+                                    id="itemDescription"
+                                    rows="3"
+                                    required
+                            ></textarea>
+                            <div class="invalid-feedback">
+                                Please provide a brief description of the item.
+                            </div>
+                        </div>
+
+                        <!-- Auction type (Forward only, but visible) -->
+                        <div class="mb-3">
+                            <label for="auctionType" class="form-label">Auction type</label>
+                            <select
+                                    id="auctionType"
+                                    class="form-select"
+                                    required
+                            >
+                                <option value="FORWARD" selected>Forward</option>
+                            </select>
+                            <div class="form-text">
+                                Only Forward auctions are required for this assignment.
+                            </div>
+                        </div>
+
+                        <!-- Duration -->
+                        <div class="mb-3">
+                            <label for="duration" class="form-label">
+                                Duration <span class="text-muted">(minutes)</span>
+                            </label>
+                            <input
+                                    type="number"
+                                    class="form-control"
+                                    id="duration"
+                                    min="1"
+                                    step="1"
+                                    value="10"
+                                    required
+                            />
+                            <div class="invalid-feedback">
+                                Please enter a positive duration in minutes.
+                            </div>
+                            <div class="form-text">
+                                You can interpret this however your backend expects (e.g. minutes or seconds).
+                            </div>
+                        </div>
+
+                        <!-- Starting bid -->
+                        <div class="mb-3">
+                            <label for="startingBid" class="form-label">Starting bid price ($)</label>
+                            <input
+                                    type="number"
+                                    class="form-control"
+                                    id="startingBid"
+                                    min="0"
+                                    step="0.01"
+                                    value="0"
+                                    required
+                            />
+                            <div class="invalid-feedback">
+                                Please enter a valid starting bid (0 or higher).
+                            </div>
+                        </div>
+
+                        <!-- Optional: you can add shipping here if your DTO needs it -->
+
+                        <div class="d-flex justify-content-end mt-4">
+                            <button
+                                    type="submit"
+                                    id="createAuctionItemBtn"
+                                    class="btn btn-primary"
+                            >
+                                Create auction item
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/auction-item.js"></script>
+</body>
+</html>
