@@ -28,17 +28,22 @@
     itemEl.textContent = itemId;
 
     function showError(msg) {
+      if (!alertErr) return;
       alertErr.textContent = msg;
       alertErr.classList.remove("d-none");
+      if (alertOk) alertOk.classList.add("d-none");
     }
 
     function hideError() {
+      if (!alertErr) return;
       alertErr.classList.add("d-none");
     }
 
     function showSuccess(msg) {
+      if (!alertOk) return;
       alertOk.textContent = msg;
       alertOk.classList.remove("d-none");
+      if (alertErr) alertErr.classList.add("d-none");
       setTimeout(() => alertOk.classList.add("d-none"), 2500);
     }
 
@@ -53,39 +58,39 @@
     }
 
     function renderState(state) {
-      // 🔄 use AuctionView.currentPrice (no startPrice here)
-      const price = state.currentPrice != null ? state.currentPrice : "-";
-      priceEl.textContent = price === "-" ? "$-" : `$${price}`;
+      const priceValue =
+        state.currentPrice != null ? state.currentPrice : state.startPrice;
 
-      hbEl.textContent = state.highestBidderId != null ? state.highestBidderId : "-";
+      priceEl.textContent =
+        priceValue != null ? `$${priceValue}` : "$-";
 
-      // 🔄 use AuctionView.endTime
+      hbEl.textContent =
+        state.highestBidderId != null ? state.highestBidderId : "-";
+
+      // Use endTime from AuctionView (Instant serialized as ISO string)
       startCountdown(state.endTime, state.status);
-      if (state.status && state.status !== "ACTIVE" && state.status !== "OPEN") {
+
+      // If not open, stop polling – but DO NOT redirect anywhere
+      if (state.status && state.status !== "OPEN") {
         stopPolling();
       }
-
     }
 
-    function startCountdown(endTimeIso, status) {
+    function startCountdown(endTimeStr, status) {
       if (countdownInterval) clearInterval(countdownInterval);
 
-      if (!endTimeIso) {
+      if (!countdownEl) return;
+
+      // If auction is not open, just show "Auction ended"
+      if (!endTimeStr || (status && status !== "OPEN")) {
         countdownEl.textContent = "Auction ended";
         return;
       }
 
-      // consider OPEN and ACTIVE as running auctions
-      const isActive = !status || status === "ACTIVE" || status === "OPEN";
-      if (!isActive) {
-        countdownEl.textContent = "Auction ended";
-        return;
-      }
-
-      const endTime = new Date(endTimeIso).getTime();
+      const endTimeMs = new Date(endTimeStr).getTime();
 
       const tick = () => {
-        const diff = endTime - Date.now();
+        const diff = endTimeMs - Date.now();
         if (diff <= 0) {
           countdownEl.textContent = "Auction ended";
           clearInterval(countdownInterval);
@@ -99,7 +104,6 @@
       tick();
       countdownInterval = setInterval(tick, 1000);
     }
-
 
     function startPolling() {
       if (pollInterval) clearInterval(pollInterval);
@@ -125,13 +129,19 @@
         await loadState(); // refresh immediately
       } catch (e) {
         console.error(e);
-        showError(e.message || "Bid failed. Make sure it is higher than the current price.");
+        showError(
+          e.message ||
+            "Bid failed. Make sure it is higher than the current price and the auction is still open."
+        );
       }
     });
 
     // initial load + polling
     (async function start() {
-      if (!userId) { requireLogin(); return; }
+      if (!userId) {
+        requireLogin();
+        return;
+      }
       await loadState();
       startPolling();
     })();

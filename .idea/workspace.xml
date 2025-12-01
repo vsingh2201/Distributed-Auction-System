@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/config/SchedulingConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/exception/InvalidBidException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/pay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/payment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionClosingScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionClosingScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +89,7 @@
       <recent name="$PROJECT_DIR$/auction-service/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServiceRegistryApplication">
+  <component name="RunManager" selected="Application.ApiGatewayApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.backendboys.apigateway.ApiGatewayApplication" />
       <module name="api-gateway" />
@@ -128,12 +129,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServiceRegistryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.backendboys.serviceregistry.ServiceRegistryApplication" />
-      <module name="service-registry" />
+    <configuration name="PaymentServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.backendboys.paymentservice.PaymentServiceApplication" />
+      <module name="payment-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.backendboys.serviceregistry.*" />
+          <option name="PATTERN" value="ca.backendboys.paymentservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PaymentServiceApplication" />
         <item itemvalue="Application.AuctionServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.CatalogueServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.UserServiceApplication" />
-        <item itemvalue="Application.ServiceRegistryApplication" />
       </list>
     </recent_temporary>
   </component>

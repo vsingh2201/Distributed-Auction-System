@@ -102,15 +102,29 @@ const api = {
        amount: Number(amount),        // make it a number
      }),
    }),
+ // UC4: Shipping info from Catalogue service
+ getShipping: (itemId) =>
+   apiFetch(`${CATALOGUE_BASE}/catalogue/${itemId}/shipping`),
 
+ // UC4/5: Create payment in Payment service
+ // payload shape must match the Payment service DTO
+ // { itemId, userId, shippingChoice, cardNumber, cardName, cardExp, cvv }
+ pay: (payload) =>
+   apiFetch(`${PAYMENT_BASE}/payments`, {
+     method: "POST",
+     body: JSON.stringify({
+       itemId: payload.itemId,
+       userId: payload.userId,
+       shippingChoice: payload.shippingChoice, // "STANDARD" or "EXPEDITED"
+       cardNumber: payload.cardNumber,
+       cardName: payload.cardName,
+       cardExp: payload.cardExp,
+       cvv: payload.cvv,
+     }),
+   }),
 
-  // UC5/6: Payment / Receipt ----------------------------------------
-  pay: (payload) =>
-    apiFetch(`${PAYMENT_BASE}/payments`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-    }),
+ // UC6: Get receipt
+ receipt: (paymentId) =>
+   apiFetch(`${PAYMENT_BASE}/receipts/${paymentId}`)
 
-  receipt: (paymentId) =>
-    apiFetch(`${PAYMENT_BASE}/receipts/${paymentId}`),
 };
