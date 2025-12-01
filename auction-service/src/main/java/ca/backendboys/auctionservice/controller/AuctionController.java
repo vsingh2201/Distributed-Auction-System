@@ -3,6 +3,7 @@ package ca.backendboys.auctionservice.controller;
 import ca.backendboys.auctionservice.dto.*;
 import ca.backendboys.auctionservice.service.*;
 import ca.backendboys.auctionservice.model.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -62,6 +63,13 @@ public class AuctionController {
     @PostMapping("/{itemId}/close")
     public ResponseEntity<CloseResponse> close(@PathVariable Long itemId) {
         return ResponseEntity.ok(command.closeAuction(itemId));
+    }
+
+    // NEW: create an auction for an item
+    @PostMapping
+    public ResponseEntity<AuctionResponse> create(@RequestBody CreateAuctionRequest req) {
+        AuctionResponse resp = command.createAuction(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
     }
 
 }

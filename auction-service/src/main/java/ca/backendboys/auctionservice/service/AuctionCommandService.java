@@ -8,6 +8,8 @@ import jakarta.persistence.OptimisticLockException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ca.backendboys.auctionservice.exception.InvalidBidException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 import java.time.Instant;
 
@@ -92,6 +94,29 @@ public class AuctionCommandService {
         auctions.save(a);
 
         return new CloseResponse(a.getId(), a.getStatus().name(), a.getHighestBidderId(), a.getCurrentPrice());
+    }
+
+    // NEW:
+    @Transactional
+    public AuctionResponse createAuction(CreateAuctionRequest req) {
+        if (auctions.existsByItemId(req.getItemId())) {
+            throw new IllegalStateException(
+                    "Auction already exists for item " + req.getItemId());
+        }
+
+        // Parse "2025-12-05T12:00:00" coming from JSON
+        LocalDateTime ldt = LocalDateTime.parse(req.getEndsAt());
+        Instant endsAt = ldt.atZone(ZoneOffset.UTC).toInstant();
+
+        Auction a = new Auction();
+        a.setItemId(req.getItemId());
+        a.setStatus(AuctionStatus.OPEN);
+        a.setStartPrice(req.getStartPrice());
+        a.setCurrentPrice(req.getStartPrice());
+        a.setEndTime(endsAt);
+
+        Auction saved = auctions.save(a);
+        return AuctionResponse.from(saved);
     }
 
 }

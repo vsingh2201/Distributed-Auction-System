@@ -102,6 +102,11 @@ const api = {
        amount: Number(amount),        // make it a number
      }),
    }),
+ createAuction: (itemId, startPrice, endsAt) =>
+   apiFetch(`${AUCTION_BASE}/auctions`, {
+     method: "POST",
+     body: JSON.stringify({ itemId, startPrice, endsAt }),
+   }),
  // UC4: Shipping info from Catalogue service
  getShipping: (itemId) =>
    apiFetch(`${CATALOGUE_BASE}/catalogue/${itemId}/shipping`),

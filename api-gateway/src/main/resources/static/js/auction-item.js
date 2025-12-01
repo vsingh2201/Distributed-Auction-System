@@ -1,6 +1,6 @@
 // js/auction-item.js
 // UC7: Auction item upload
-// Uses helpers from api.js: requireLogin(), getUserId(), api.createItem()
+// Uses helpers from api.js: requireLogin(), getUserId(), api.createItem(), api.createAuction()
 
 (function () {
   function showError(msg) {
@@ -69,7 +69,7 @@
         document.getElementById("startingBid").value || 0
       );
 
-      // Shipping-related fields (optional in the form, but used by the Catalogue service)
+      // Shipping-related fields
       const standardCost = Number(
         (document.getElementById("standardCost")?.value || 0)
       );
@@ -81,28 +81,16 @@
       );
 
       // --------------------------------------------------------------------
-      // Compute endsAt from "now + duration"
-      // Your Postman example uses a string like:  "2025-12-05T12:00:00"
-      // We'll generate the same style (no 'Z', no milliseconds).
+      // Compute endsAt from "now + duration" (minutes)
+      // Format: "YYYY-MM-DDTHH:mm:ss"
       // --------------------------------------------------------------------
       const now = new Date();
-      const endDate = new Date(now.getTime() + duration * 60 * 1000); // duration in minutes
-      const iso = endDate.toISOString(); // e.g. "2025-12-05T12:00:00.000Z"
+      const endDate = new Date(now.getTime() + duration * 60 * 1000);
+      const iso = endDate.toISOString(); // "2025-12-05T12:00:00.000Z"
       const endsAt = iso.substring(0, 19); // "2025-12-05T12:00:00"
 
       // --------------------------------------------------------------------
-      // Payload – matches the Catalogue service DTO from Postman:
-      //
-      // {
-      //   "name": "...",
-      //   "keywords": "...",
-      //   "startPrice": 25.99,
-      //   "endsAt": "2025-12-05T12:00:00",
-      //   "status": "ACTIVE",
-      //   "standardCost": 5.0,
-      //   "expeditedCost": 10.0,
-      //   "shipInDays": 2
-      // }
+      // Payload – matches the Catalogue service DTO from Postman
       // --------------------------------------------------------------------
       const payload = {
         name,
@@ -113,14 +101,27 @@
         standardCost,
         expeditedCost,
         shipInDays,
-        // sellerId: userId,  // add this if/when your Catalogue DTO supports it
+        // sellerId: userId,  // add if your Catalogue DTO supports it
       };
 
       try {
+        // 1) Create the catalogue item
         const res = await api.createItem(payload);
-        // Catalogue service returns something like { itemId: 7, ... }
-        const newId = res.itemId || res.id || res.catalogueId || "";
+        const newId = res.itemId || res.id || res.catalogueId || null;
 
+        if (!newId) {
+          throw new Error("Catalogue item created but no itemId was returned.");
+        }
+
+        // 2) Create the corresponding auction in Auction service
+        // Body shape: { itemId, startPrice, endsAt }
+        await api.createAuction({
+          itemId: Number(newId),
+          startPrice: startingBid,
+          endsAt: endsAt,
+        });
+
+        // 3) Show success message
         showSuccess(
           "Auction item created successfully" +
             (newId ? `! Item ID: ${newId}` : "!")
@@ -129,7 +130,6 @@
         // Optional: clear the form for the next upload
         form.reset();
         form.classList.remove("was-validated");
-        // Ensure Forward is still selected and some defaults are set
         if (document.getElementById("auctionType")) {
           document.getElementById("auctionType").value = "FORWARD";
         }

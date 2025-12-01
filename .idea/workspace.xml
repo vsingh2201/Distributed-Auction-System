@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction-item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/upload-item.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/dto/AuctionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/dto/CreateAuctionRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalogue-service/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction-item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/repository/AuctionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/repository/AuctionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,8 +162,8 @@
         <item itemvalue="Application.PaymentServiceApplication" />
         <item itemvalue="Application.AuctionServiceApplication" />
         <item itemvalue="Application.CatalogueServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.UserServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
       </list>
     </recent_temporary>
   </component>
