@@ -69,7 +69,7 @@ INSERT INTO auctions (
   status, start_time, end_time, version
 ) VALUES (
   4, 10, 50, 50, NULL,
-  'OPEN', DATETIME('now','-1 minutes'), DATETIME('now','+1 minutes'), 0
+  'OPEN', DATETIME('now','-2 minutes'), DATETIME('now','+2 minutes'), 0
 );
 
 ----------------------------------------------------------------

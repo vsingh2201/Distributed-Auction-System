@@ -28,8 +28,8 @@ public interface PaymentService {
      */
     record PaymentView(
             UUID paymentId,
-            UUID itemId,
-            UUID userId,
+            Long itemId,
+            Integer userId,
             BigDecimal finalPrice,
             ShippingChoice shippingChoice,
             PaymentStatus status,

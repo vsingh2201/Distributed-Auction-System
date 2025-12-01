@@ -12,8 +12,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 public class PaymentRequest {
-    private UUID itemId;
-    private UUID userId;
+    private Long itemId;
+    private Integer userId;
     private ShippingChoice shippingChoice;
 
     // mock card details for this assignment (never store real PANs in prod)
