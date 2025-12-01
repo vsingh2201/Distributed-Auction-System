@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/receipt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/receipt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/ca/backendboys/paymentservice/dto/PaymentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/ca/backendboys/paymentservice/dto/PaymentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/ca/backendboys/paymentservice/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/ca/backendboys/paymentservice/model/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/ca/backendboys/paymentservice/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/ca/backendboys/paymentservice/service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/pay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/payment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,9 +158,9 @@
       <list>
         <item itemvalue="Application.PaymentServiceApplication" />
         <item itemvalue="Application.AuctionServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.CatalogueServiceApplication" />
         <item itemvalue="Application.UserServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
       </list>
     </recent_temporary>
   </component>

@@ -9,21 +9,27 @@
 
   function showError(msg) {
     const a = document.getElementById("alertError");
+    if (!a) return;
     a.textContent = msg;
     a.classList.remove("d-none");
-    document.getElementById("alertSuccess").classList.add("d-none");
+    const ok = document.getElementById("alertSuccess");
+    if (ok) ok.classList.add("d-none");
   }
 
   function showSuccess(msg) {
     const a = document.getElementById("alertSuccess");
+    if (!a) return;
     a.textContent = msg;
     a.classList.remove("d-none");
-    document.getElementById("alertError").classList.add("d-none");
+    const err = document.getElementById("alertError");
+    if (err) err.classList.add("d-none");
   }
 
   function clearAlerts() {
-    document.getElementById("alertError").classList.add("d-none");
-    document.getElementById("alertSuccess").classList.add("d-none");
+    const err = document.getElementById("alertError");
+    const ok = document.getElementById("alertSuccess");
+    if (err) err.classList.add("d-none");
+    if (ok) ok.classList.add("d-none");
   }
 
   async function initPaymentPage() {
@@ -89,6 +95,9 @@
 
       try {
         const res = await api.pay(payload);
+
+        // This is exactly the structure your Postman response uses:
+        // { "paymentId": "ae5bea60-d2c8-4e74-ab4f-e503e2be2ada" }
         const paymentId = res.paymentId || res.id || "";
 
         showSuccess(
@@ -96,10 +105,14 @@
             (paymentId ? `! Payment ID: ${paymentId}` : "!")
         );
 
-        // For UC6 you can redirect to a receipt page:
-        // if (paymentId) {
-        //   window.location.href = `receipt.html?paymentId=${paymentId}`;
-        // }
+        // *** REDIRECT TO UC6 RECEIPT PAGE ***
+        if (paymentId) {
+          // tiny delay so user glimpses the success banner (optional)
+          setTimeout(() => {
+            window.location.href =
+              "receipt.html?paymentId=" + encodeURIComponent(paymentId);
+          }, 600);
+        }
       } catch (err) {
         console.error(err);
         showError(err.message || "Payment failed. Please check your card details.");
