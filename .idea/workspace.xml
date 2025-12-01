@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/catalogue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/config/SchedulingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/exception/InvalidBidException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/bid.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/bid.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/catalogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/catalogue.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/controller/AuctionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionClosingScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionClosingScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/java/ca/backendboys/auctionservice/service/AuctionCommandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -160,9 +157,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AuctionServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.CatalogueServiceApplication" />
         <item itemvalue="Application.UserServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.ServiceRegistryApplication" />
       </list>
     </recent_temporary>

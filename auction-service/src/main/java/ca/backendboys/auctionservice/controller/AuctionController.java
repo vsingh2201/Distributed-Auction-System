@@ -6,6 +6,7 @@ import ca.backendboys.auctionservice.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import ca.backendboys.auctionservice.exception.InvalidBidException;
 
 @RestController
 @RequestMapping("/auctions")
@@ -39,14 +40,23 @@ public class AuctionController {
     }
 
     @PostMapping("/{itemId}/bid")
-    public ResponseEntity<BidResponse> bid(@PathVariable Long itemId, @RequestBody BidRequest req) {
+    public ResponseEntity<?> bid(@PathVariable Long itemId,
+                                 @RequestBody BidRequest req) {
+
         // simple safety net – for some reason bidderId is null
         if (req.getBidderId() == null) {
-            // Fall back to a default demo user (e.g. 42 or 1).
-            // This keeps your demo working even if frontend sends something odd.
-            req.setBidderId(42L);
+            req.setBidderId(42L); // or remove this if you no longer need it
         }
-        return ResponseEntity.ok(command.placeBid(itemId, req));
+
+        try {
+            BidResponse resp = command.placeBid(itemId, req);
+            return ResponseEntity.ok(resp);
+        } catch (InvalidBidException e) {
+            // 400 with a simple text body
+            return ResponseEntity
+                    .badRequest()
+                    .body(e.getMessage());
+        }
     }
 
     @PostMapping("/{itemId}/close")
