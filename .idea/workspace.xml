@@ -6,20 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0a40a86a-cbee-4a7d-84ea-016a97164d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction-item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/catalogue.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/catalogue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/password.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/password.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/pay.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/pay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/receipt.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/js/receipt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/receipt.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/receipt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/static/upload-item.html" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/static/upload-item.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/auction-service/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogue-service/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/src/main/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,35 +47,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ApiGatewayApplication.executor": "Run",
-    "Application.AuctionServiceApplication.executor": "Run",
-    "Application.CatalogueServiceApplication.executor": "Run",
-    "Application.PaymentServiceApplication.executor": "Run",
-    "Application.ServiceRegistryApplication.executor": "Run",
-    "Application.UserServiceApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Maven.PaymentServiceApplication.executor": "Run",
-    "Maven.api-gateway [clean].executor": "Run",
-    "Maven.auction-service [clean,install...].executor": "Run",
-    "Maven.auction-service [install,--non-recursive].executor": "Run",
-    "Maven.catalogue-service [clean,install...].executor": "Run",
-    "Maven.catalogue-service [install...].executor": "Run",
-    "Maven.payment-service [clean,install...].executor": "Run",
-    "Maven.payment-service [install,--non-recursive].executor": "Run",
-    "Maven.user-service [clean,install...].executor": "Run",
-    "Maven.user-service [install,--non-recursive].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/vikramjeetsingh/EECS4413-F25-Project/eecs4413-microservices-auction-project",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AuctionServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CatalogueServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PaymentServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.PaymentServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.auction-service [clean,install...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.auction-service [install,--non-recursive].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.catalogue-service [clean,install...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.catalogue-service [install...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.payment-service [clean,install...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.payment-service [install,--non-recursive].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.user-service [clean,install...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.user-service [install,--non-recursive].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vikramjeetsingh/EECS4413-F25-Project/eecs4413-microservices-auction-project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
