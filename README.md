@@ -15,6 +15,10 @@ Use docker compose up to run the images in containers
 ```bash
   docker compose up
 ```
+Go to the following Url to access the application after running docker compose up
+```bash
+  http://localhost:9191/
+```
 
 To run the containers in detached mode
 ```bash
@@ -56,7 +60,7 @@ First run the service-registry and api-gateway services and then run the other m
 
 ## To access a service using Gateway
 
-For example, auction-service
+For example, auction-service<br>
 Use the following URL and Gateway will map it to Auction Service
 
 ```bash

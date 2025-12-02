@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
+@Component
 public class AuctionClosingScheduler {
     private final AuctionRepository auctions;
 

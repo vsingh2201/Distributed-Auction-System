@@ -9,6 +9,8 @@ import ca.backendboys.userservice.model.User;
 import ca.backendboys.userservice.model.Address;
 import java.util.List;
 
+;
+
 @RestController
 public class UserController {
 
@@ -65,4 +67,47 @@ public class UserController {
 
         return ResponseEntity.ok(user);
     }
+    @PostMapping("/auth/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordRequest resetRequest) {
+        //logger.info("Reset password request received - Email: {}", resetRequest.getEmail());
+
+        User user = userService.findByEmail(resetRequest.getEmail());
+
+        if (user == null) {
+            return ResponseEntity.badRequest().body("Email not found");
+        }
+
+        String newPassword = resetRequest.getNewPassword();
+        if (newPassword == null || newPassword.isEmpty()) {
+            //logger.warn("New password is null or empty");
+            return ResponseEntity.badRequest().body("New password is required");
+        }
+
+        if (newPassword.length() < 6) {
+            return ResponseEntity.badRequest().body("Password must be at least 6 characters long");
+        }
+
+        user.setPassword(newPassword);
+        userService.saveUser(user);
+
+        return ResponseEntity.ok("Password reset successfully");
+    }
+
+    // nested DTO class can stay as you have it
+    public static class ResetPasswordRequest {
+        private String email;
+        private String newPassword;
+
+        public ResetPasswordRequest() {}
+        public ResetPasswordRequest(String email, String newPassword) {
+            this.email = email;
+            this.newPassword = newPassword;
+        }
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
+        public String getNewPassword() { return newPassword; }
+        public void setNewPassword(String newPassword) { this.newPassword = newPassword; }
+    }
+
+
 }

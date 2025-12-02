@@ -22,10 +22,10 @@ public class Payment {
     private UUID id;
 
     @Column(nullable = false)
-    private UUID itemId;
+    private Long itemId;
 
     @Column(nullable = false)
-    private UUID userId;
+    private Integer userId;
 
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal finalPrice;

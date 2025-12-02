@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pay Now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    >
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="catalogue.html"
+        ><img
+                src="images/logo-transparent.png"
+                alt="Auction Logo"
+                height="40"
+        /></a>
+        <div class="ms-auto d-flex gap-2">
+            <a class="btn btn-outline-primary btn-sm" href="catalogue.html"
+            >Catalogue</a
+            >
+            <a
+                    class="btn btn-outline-secondary btn-sm"
+                    href="index.html"
+                    onclick="localStorage.clear()"
+            >Logout</a
+            >
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Bidding Ended – Pay Now</h3>
+
+            <div id="alertError" class="alert alert-danger d-none" role="alert"></div>
+            <div id="alertSuccess" class="alert alert-success d-none" role="alert"></div>
+
+            <!-- Item + shipping info -->
+            <div class="row mb-4">
+                <div class="col-md-7">
+                    <h5 class="fw-semibold mb-1" id="itemName">Item description</h5>
+                    <p class="mb-1 text-muted">
+                        Item ID: <span id="itemIdLabel">–</span> · Auction ID: <span id="auctionIdLabel">–</span>
+                    </p>
+
+                    <p class="mb-1">
+                        Standard shipping:
+                        <span class="fw-semibold">$<span id="shippingPrice">0.00</span></span>
+                    </p>
+
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="expeditedCheckbox">
+                        <label class="form-check-label" for="expeditedCheckbox">
+                            Add expedited shipping
+                            (<span class="text-muted">+ $<span id="expeditedPrice">0.00</span></span>)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="border rounded p-3 bg-light">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Winning bid:</span>
+                            <span class="fw-semibold">$<span id="winningPrice">0.00</span></span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Shipping total:</span>
+                            <span>$<span id="shippingTotal">0.00</span></span>
+                        </div>
+                        <hr class="my-2">
+                        <div class="d-flex justify-content-between">
+                            <span class="fw-semibold">Total to pay:</span>
+                            <span class="fw-bold fs-5">$<span id="grandTotal">0.00</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Who can pay -->
+            <div class="mb-3">
+                <p class="mb-0">
+                    Highest bidder (winner) user ID:
+                    <span class="fw-semibold" id="winnerId">–</span>
+                </p>
+                <p class="small text-muted mb-0">
+                    Only the winning user can successfully complete payment. Others will get a failure response.
+                </p>
+            </div>
+
+            <!-- Pay button -->
+            <div class="text-end">
+                <button id="payBtn" class="btn btn-primary btn-lg" disabled>
+                    Pay Now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/pay.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
