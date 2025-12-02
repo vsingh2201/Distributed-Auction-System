@@ -1,6 +1,4 @@
-// js/payment.js
-// UC5: Payment page
-// Uses helpers from api.js: requireLogin(), getUserId(), api.item(), api.pay()
+
 
 (function () {
   function fmt(n) {

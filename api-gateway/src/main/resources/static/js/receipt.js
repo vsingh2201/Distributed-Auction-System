@@ -1,6 +1,4 @@
-// js/receipt.js
-// UC6: Receipt & Shipping details
-// Uses helpers from api.js: requireLogin(), getUserId(), api.receipt(), api.shipping() / api.getShipping()
+
 
 (function () {
   function fmt(n) {

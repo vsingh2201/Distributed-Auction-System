@@ -1,5 +1,3 @@
-// js/auction.js
-// Logic for bid.html – uses helpers from api.js: api.state, api.bid, requireLogin, getUserId
 
 (function () {
   let pollInterval = null;
@@ -67,7 +65,7 @@
       hbEl.textContent =
         state.highestBidderId != null ? state.highestBidderId : "-";
 
-      // Use endTime from AuctionView (Instant serialized as ISO string)
+      // Use endTime from AuctionView
       startCountdown(state.endTime, state.status);
 
       // If not open, stop polling – but DO NOT redirect anywhere

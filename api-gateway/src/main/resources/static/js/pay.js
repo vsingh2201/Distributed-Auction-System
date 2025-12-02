@@ -1,6 +1,4 @@
-// js/pay.js
-// UC4: Auction Ended – Pay Now page
-// Uses helpers from api.js: requireLogin(), getUserId(), api.state(), api.getShipping()
+
 
 (function () {
   let winningPrice = 0;

@@ -1,5 +1,4 @@
-// js/catalogue.js
-// UC2: Browse Catalogue (search + list + bid link)
+
 
 (function () {
   document.addEventListener("DOMContentLoaded", () => {

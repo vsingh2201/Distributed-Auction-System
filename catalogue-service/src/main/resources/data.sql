@@ -1,5 +1,4 @@
 -- data.sql for catalogue.db
--- Preload sample items into the "items" table
 
 DELETE FROM items;
 
@@ -14,7 +13,7 @@ INSERT INTO items (
     start_price,
     status
 ) VALUES
--- 1: Wireless Mouse (already sold – good for testing)
+-- 1: Wireless Mouse (already sold)
 (1,
  1764954000000,
  10.0,

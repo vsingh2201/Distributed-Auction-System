@@ -10,7 +10,7 @@ INSERT INTO auctions (
   status, start_time, end_time, version
 ) VALUES (
   1, 7, 500, 500, NULL,
-  'OPEN', DATETIME('now','-5 minutes'), DATETIME('now','+15 minutes'), 0
+  'OPEN', DATETIME('now','-5 minutes'), DATETIME('now','+3 minutes'), 0
 );
 
 ----------------------------------------------------------------
@@ -92,4 +92,20 @@ INSERT INTO auctions (
 ) VALUES (
   6, 12, 300, 300, NULL,
   'CANCELLED', DATETIME('now','-10 minutes'), DATETIME('now','+20 minutes'), 0
+);
+
+INSERT INTO auctions (
+  item_id, seller_id, start_price, current_price, highest_bidder_id,
+  status, start_time, end_time, version
+) VALUES (
+  7, 13, 129, 150, NULL,
+  'OPEN', DATETIME('now','-2 minutes'), DATETIME('now','+8 minutes'), 0
+);
+
+INSERT INTO auctions (
+  item_id, seller_id, start_price, current_price, highest_bidder_id,
+  status, start_time, end_time, version
+) VALUES (
+  8, 14, 89, 101, NULL,
+  'OPEN', DATETIME('now','-2 minutes'), DATETIME('now','+10 minutes'), 0
 );

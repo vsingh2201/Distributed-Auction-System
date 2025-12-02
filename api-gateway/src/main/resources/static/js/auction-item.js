@@ -1,6 +1,3 @@
-// js/auction-item.js
-// UC7: Auction item upload
-// Uses helpers from api.js: requireLogin(), getUserId(), api.createItem(), api.createAuction()
 
 (function () {
   function showError(msg) {
@@ -101,7 +98,7 @@
         standardCost,
         expeditedCost,
         shipInDays,
-        // sellerId: userId,  // add if your Catalogue DTO supports it
+        // sellerId: userId,
       };
 
       try {

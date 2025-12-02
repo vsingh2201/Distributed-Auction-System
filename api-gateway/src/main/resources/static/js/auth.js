@@ -1,5 +1,4 @@
-// js/auth.js
-// UC1: Sign-In + Sign-Up page logic (uses api.js)
+
 
 (function () {
 
@@ -8,7 +7,7 @@
     const form = document.getElementById("loginForm");
     if (!form) return; // not on this page
 
-    const emailEl = document.getElementById("username"); // field label says "Username", but we treat it as email
+    const emailEl = document.getElementById("username");
     const passwordEl = document.getElementById("password");
     const msgEl = document.getElementById("msg");
 

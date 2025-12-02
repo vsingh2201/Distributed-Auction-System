@@ -1,4 +1,3 @@
-// js/api.js
 
 // Base URLs through the API gateway
 const USER_BASE      = "/user-service";
@@ -112,7 +111,6 @@ const api = {
    apiFetch(`${CATALOGUE_BASE}/catalogue/${itemId}/shipping`),
 
  // UC4/5: Create payment in Payment service
- // payload shape must match the Payment service DTO
  // { itemId, userId, shippingChoice, cardNumber, cardName, cardExp, cvv }
  pay: (payload) =>
    apiFetch(`${PAYMENT_BASE}/payments`, {

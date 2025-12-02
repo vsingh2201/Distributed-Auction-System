@@ -1,5 +1,4 @@
-// js/password.js
-// Forgot Password / Reset Password page logic
+
 
 (function () {
   document.addEventListener("DOMContentLoaded", () => {
