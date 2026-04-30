@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class CreateAuctionRequest {
 
     private Long itemId;
+    private Long sellerId;
     private int startPrice;
     // same format you already use in Catalogue:
     // "2025-12-05T12:00:00"
@@ -20,6 +21,13 @@ public class CreateAuctionRequest {
     }
     public void setItemId(Long itemId) {
         this.itemId = itemId;
+    }
+
+    public Long getSellerId() {
+        return sellerId;
+    }
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
     }
 
     public int getStartPrice() {

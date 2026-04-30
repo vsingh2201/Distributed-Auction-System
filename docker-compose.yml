@@ -3,6 +3,7 @@ version: "3.9"
 services:
   service-registry:
     build: ./service-registry
+    platform: linux/arm64
     container_name: service-registry
     ports:
       - "8761:8761"
@@ -11,6 +12,7 @@ services:
 
   api-gateway:
     build: ./api-gateway
+    platform: linux/arm64
     container_name: api-gateway
     depends_on:
       - service-registry
@@ -25,6 +27,7 @@ services:
 
   auction-service:
     build: ./auction-service
+    platform: linux/arm64
     container_name: auction-service
     depends_on:
       - service-registry
@@ -38,6 +41,7 @@ services:
 
   catalogue-service:
     build: ./catalogue-service
+    platform: linux/arm64
     container_name: catalogue-service
     depends_on:
       - service-registry
@@ -50,6 +54,7 @@ services:
 
   payment-service:
     build: ./payment-service
+    platform: linux/arm64
     container_name: payment-service
     depends_on:
       - service-registry
@@ -62,6 +67,7 @@ services:
 
   user-service:
     build: ./user-service
+    platform: linux/arm64
     container_name: user-service
     depends_on:
       - service-registry
