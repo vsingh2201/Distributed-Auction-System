@@ -51,7 +51,8 @@ public interface PaymentService {
             BigDecimal total,
             String addressLine,
             Integer shipInDays,
-            OffsetDateTime paymentDate) {
+            OffsetDateTime paymentDate,
+            String shippingChoice) {
     }
 
     /**

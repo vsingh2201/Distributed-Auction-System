@@ -65,10 +65,10 @@ const api = {
       body: JSON.stringify({ bidderId: Number(userId), amount: Number(amount) }),
     }),
 
-  createAuction: (itemId, startPrice, endsAt) =>
+  createAuction: (itemId, startPrice, endsAt, sellerId) =>
     apiFetch(`${AUCTION_BASE}/auctions`, {
       method: 'POST',
-      body: JSON.stringify({ itemId, startPrice, endsAt }),
+      body: JSON.stringify({ itemId, startPrice, endsAt, sellerId }),
     }),
 
   getShipping: (itemId) =>

@@ -87,7 +87,8 @@ public class PaymentServiceImpl implements PaymentService {
                 r.getTotal(),
                 r.getAddressLine(),
                 r.getShipInDays(),
-                r.getPaymentDate());
+                r.getPaymentDate(),
+                r.getPayment().getShippingChoice().name());
     }
 }
 

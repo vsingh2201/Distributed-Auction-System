@@ -46,8 +46,7 @@ export default function UploadItemPage() {
       const newId = res.itemId ?? res.id ?? null
       if (!newId) throw new Error('Catalogue item created but no itemId returned.')
 
-      // positional args — matches api.js signature: createAuction(itemId, startPrice, endsAt)
-      await api.createAuction(Number(newId), startingBid, endsAt)
+      await api.createAuction(Number(newId), startingBid, endsAt, Number(userId))
 
       setSuccess(`Auction created! Item ID: ${newId}`)
       setForm({ itemName: '', description: '', duration: '10', startingBid: '0' })

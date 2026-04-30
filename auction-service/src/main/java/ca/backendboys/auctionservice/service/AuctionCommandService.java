@@ -110,9 +110,11 @@ public class AuctionCommandService {
 
         Auction a = new Auction();
         a.setItemId(req.getItemId());
+        a.setSellerId(req.getSellerId() != null ? req.getSellerId() : 0L);
         a.setStatus(AuctionStatus.OPEN);
         a.setStartPrice(req.getStartPrice());
         a.setCurrentPrice(req.getStartPrice());
+        a.setStartTime(Instant.now());
         a.setEndTime(endsAt);
 
         Auction saved = auctions.save(a);

@@ -19,8 +19,8 @@ public class AuctionQueryService {
     }
 
     public AuctionView getAuctionByItem(Long itemId, Long requesterId) {
-        Auction a = auctions.findByItemId(itemId)
-                .orElseThrow(() -> new IllegalArgumentException("Auction not found"));
+        Auction a = auctions.findByItemId(itemId).orElse(null);
+        if (a == null) return null;
         boolean payable = a.getStatus() == AuctionStatus.ENDED && requesterId != null
                 && requesterId.equals(a.getHighestBidderId());
         return new AuctionView(a.getId(), a.getItemId(), a.getCurrentPrice(), a.getHighestBidderId(),
