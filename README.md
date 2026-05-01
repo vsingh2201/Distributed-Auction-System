@@ -302,8 +302,6 @@ eecs4413-microservices-auction-project/
 
 ## Screenshots
 
-> Drop screenshots into `docs/screenshots/` and they will render here.
-
 ### Catalogue — Browse & Search Items
 
 ![Catalogue Page](docs/screenshots/catalogue.png)
