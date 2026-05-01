@@ -9,8 +9,6 @@
 
 A full-stack real-time auction platform built with a **Spring Boot microservices backend** and a **React + Vite frontend**. Six independently deployable services communicate through an API Gateway backed by Netflix Eureka service discovery. The system handles concurrent bidding with optimistic locking, auto-closes expired auctions on a background scheduler, and processes payments with receipt generation.
 
-> Built for EECS 4413 (E-Commerce Technologies) — York University, Team 8.
-
 ---
 
 ## Table of Contents
@@ -41,6 +39,8 @@ A full-stack real-time auction platform built with a **Spring Boot microservices
 ---
 
 ## Architecture
+
+![Architecture diagram](docs/screenshots/architecture.png)
 
 ```
                         ┌─────────────────────────────────┐
@@ -85,39 +85,41 @@ Browser → GET /catalogue-service/catalogue/search?q=laptop
 ## Tech Stack
 
 ### Backend
-| Layer | Technology |
-|---|---|
-| Language | Java 17 |
-| Framework | Spring Boot 3.5.8 |
-| Service mesh | Spring Cloud 2025.0.0 |
-| API Gateway | Spring Cloud Gateway (WebFlux / reactive) |
-| Service discovery | Netflix Eureka |
-| ORM | Spring Data JPA + Hibernate 6 |
-| Database | SQLite 3.46 (one DB file per service) |
-| Build tool | Apache Maven (multi-module) |
-| Containerization | Docker + Docker Compose |
+
+| Layer             | Technology                                |
+| ----------------- | ----------------------------------------- |
+| Language          | Java 17                                   |
+| Framework         | Spring Boot 3.5.8                         |
+| Service mesh      | Spring Cloud 2025.0.0                     |
+| API Gateway       | Spring Cloud Gateway (WebFlux / reactive) |
+| Service discovery | Netflix Eureka                            |
+| ORM               | Spring Data JPA + Hibernate 6             |
+| Database          | SQLite 3.46 (one DB file per service)     |
+| Build tool        | Apache Maven (multi-module)               |
+| Containerization  | Docker + Docker Compose                   |
 
 ### Frontend
-| Layer | Technology |
-|---|---|
-| Framework | React 18 |
-| Build tool | Vite 5 |
-| Routing | React Router 6 |
-| Styling | Bootstrap 5 |
-| State | React Context API + localStorage |
+
+| Layer      | Technology                       |
+| ---------- | -------------------------------- |
+| Framework  | React 18                         |
+| Build tool | Vite 5                           |
+| Routing    | React Router 6                   |
+| Styling    | Bootstrap 5                      |
+| State      | React Context API + localStorage |
 
 ---
 
 ## Services
 
-| Service | Port | Responsibility |
-|---|---|---|
-| `service-registry` | 8761 | Netflix Eureka server — all services register and discover each other here |
-| `api-gateway` | 9191 | Single entry point — serves the React SPA and reverse-proxies API calls by Eureka service ID |
-| `auction-service` | 8080 | Auction lifecycle: create, bid, close. CQRS split into command/query services. Background scheduler auto-closes expired auctions |
-| `catalogue-service` | 8081 | Item catalog: CRUD, keyword search, shipping cost lookup |
-| `user-service` | 8084 | User registration, login, password reset |
-| `payment-service` | 8082 | Payment processing and receipt generation for auction winners |
+| Service             | Port | Responsibility                                                                                                                   |
+| ------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `service-registry`  | 8761 | Netflix Eureka server — all services register and discover each other here                                                       |
+| `api-gateway`       | 9191 | Single entry point — serves the React SPA and reverse-proxies API calls by Eureka service ID                                     |
+| `auction-service`   | 8080 | Auction lifecycle: create, bid, close. CQRS split into command/query services. Background scheduler auto-closes expired auctions |
+| `catalogue-service` | 8081 | Item catalog: CRUD, keyword search, shipping cost lookup                                                                         |
+| `user-service`      | 8084 | User registration, login, password reset                                                                                         |
+| `payment-service`   | 8082 | Payment processing and receipt generation for auction winners                                                                    |
 
 ---
 
@@ -127,41 +129,41 @@ All endpoints are accessed through the gateway at `http://localhost:9191`.
 
 ### Auction Service — `/auction-service/auctions`
 
-| Method | Path | Description |
-|---|---|---|
-| `POST` | `/auctions` | Create auction `{ itemId, startPrice, endsAt, sellerId }` |
-| `GET` | `/auctions/{itemId}` | Current auction state + bid status |
-| `POST` | `/auctions/{itemId}/bid` | Place a bid `{ bidderId, amount }` — must be a whole integer > currentPrice |
-| `GET` | `/auctions/{itemId}/history` | Ordered bid history for an item |
-| `POST` | `/auctions/{itemId}/close` | Manually close an auction |
+| Method | Path                         | Description                                                                 |
+| ------ | ---------------------------- | --------------------------------------------------------------------------- |
+| `POST` | `/auctions`                  | Create auction `{ itemId, startPrice, endsAt, sellerId }`                   |
+| `GET`  | `/auctions/{itemId}`         | Current auction state + bid status                                          |
+| `POST` | `/auctions/{itemId}/bid`     | Place a bid `{ bidderId, amount }` — must be a whole integer > currentPrice |
+| `GET`  | `/auctions/{itemId}/history` | Ordered bid history for an item                                             |
+| `POST` | `/auctions/{itemId}/close`   | Manually close an auction                                                   |
 
 ### Catalogue Service — `/catalogue-service/catalogue`
 
-| Method | Path | Description |
-|---|---|---|
-| `POST` | `/catalogue` | Create a new item listing |
-| `GET` | `/catalogue/items/active` | List all active items |
-| `GET` | `/catalogue/search?q={keyword}` | Case-insensitive search by name or keyword tag |
-| `GET` | `/catalogue/{id}` | Get item details |
-| `GET` | `/catalogue/{id}/shipping` | Standard and expedited shipping costs |
-| `PATCH` | `/catalogue/{id}/status` | Update item status (ACTIVE / SOLD / INACTIVE) |
+| Method  | Path                            | Description                                    |
+| ------- | ------------------------------- | ---------------------------------------------- |
+| `POST`  | `/catalogue`                    | Create a new item listing                      |
+| `GET`   | `/catalogue/items/active`       | List all active items                          |
+| `GET`   | `/catalogue/search?q={keyword}` | Case-insensitive search by name or keyword tag |
+| `GET`   | `/catalogue/{id}`               | Get item details                               |
+| `GET`   | `/catalogue/{id}/shipping`      | Standard and expedited shipping costs          |
+| `PATCH` | `/catalogue/{id}/status`        | Update item status (ACTIVE / SOLD / INACTIVE)  |
 
 ### User Service — `/user-service`
 
-| Method | Path | Description |
-|---|---|---|
-| `POST` | `/auth/register` | Register — requires username, email, password, and full address |
-| `POST` | `/auth/login` | Login with email + password |
-| `POST` | `/auth/reset-password` | Reset password by email |
-| `GET` | `/users` | List all users |
+| Method | Path                   | Description                                                     |
+| ------ | ---------------------- | --------------------------------------------------------------- |
+| `POST` | `/auth/register`       | Register — requires username, email, password, and full address |
+| `POST` | `/auth/login`          | Login with email + password                                     |
+| `POST` | `/auth/reset-password` | Reset password by email                                         |
+| `GET`  | `/users`               | List all users                                                  |
 
 ### Payment Service — `/payment-service`
 
-| Method | Path | Description |
-|---|---|---|
-| `POST` | `/payments` | Create payment `{ itemId, userId, shippingChoice, cardNumber, cardName, cardExp, cvv }` |
-| `GET` | `/payments/{paymentId}` | Payment details |
-| `GET` | `/receipts/{paymentId}` | Generated receipt for a completed payment |
+| Method | Path                    | Description                                                                             |
+| ------ | ----------------------- | --------------------------------------------------------------------------------------- |
+| `POST` | `/payments`             | Create payment `{ itemId, userId, shippingChoice, cardNumber, cardName, cardExp, cvv }` |
+| `GET`  | `/payments/{paymentId}` | Payment details                                                                         |
+| `GET`  | `/receipts/{paymentId}` | Generated receipt for a completed payment                                               |
 
 ---
 
@@ -197,9 +199,9 @@ docker compose build
 docker compose up
 ```
 
-| URL | What you get |
-|---|---|
-| `http://localhost:9191` | React frontend (auction app) |
+| URL                     | What you get                                           |
+| ----------------------- | ------------------------------------------------------ |
+| `http://localhost:9191` | React frontend (auction app)                           |
 | `http://localhost:8761` | Eureka dashboard — confirm all services are registered |
 
 To run in the background: `docker compose up -d`
@@ -229,16 +231,6 @@ cd frontend && npm run dev
 ```
 
 ---
-
-### Run Tests
-
-```bash
-# All modules from root
-mvn test
-
-# Single service
-cd auction-service && mvn test
-```
 
 ### Postman Collection
 
@@ -313,18 +305,23 @@ eecs4413-microservices-auction-project/
 > Drop screenshots into `docs/screenshots/` and they will render here.
 
 ### Catalogue — Browse & Search Items
+
 ![Catalogue Page](docs/screenshots/catalogue.png)
 
 ### Bid Page — Live Auction with Countdown Timer
+
 ![Bid Page](docs/screenshots/bid.png)
 
 ### Payment Flow
+
 ![Payment Page](docs/screenshots/payment.png)
 
 ### Receipt
+
 ![Receipt Page](docs/screenshots/receipt.png)
 
 ### Eureka Dashboard — All 4 Services Registered
+
 ![Eureka Dashboard](docs/screenshots/eureka.png)
 
 ---
@@ -332,25 +329,24 @@ eecs4413-microservices-auction-project/
 ## Design Patterns
 
 ### CQRS (Command Query Responsibility Segregation)
+
 `auction-service` is split into `AuctionCommandService` (writes: place bid, create, close) and `AuctionQueryService` (reads: state, history). Mutation logic is isolated from the read path, and each can be tuned independently.
 
 ### Optimistic Locking
+
 `Auction` carries a `@Version Long version` field managed by Hibernate. When two users submit a bid at the same instant, only one write succeeds — the other triggers an `ObjectOptimisticLockingFailureException`, caught by the command service and surfaced as a conflict response. No pessimistic locks, no deadlocks.
 
 ### Scheduled Background Job
+
 `AuctionClosingScheduler` runs `@Scheduled(fixedDelay = 30_000)`, queries for all `OPEN` auctions whose `endTime` has passed, and transitions them to `ENDED`. Closing is fully decoupled from the bid request path.
 
 ### API Gateway + Service Discovery
+
 The gateway uses Spring Cloud's Eureka discovery locator — routes are derived automatically from the service IDs registered in Eureka. Adding a new service requires zero changes to the gateway configuration.
 
 ### Database-per-Service
+
 Each service owns its own SQLite file (`auction.db`, `catalogue.db`, `payment.db`, `user.db`). There are no cross-service JOINs or shared schemas — service boundaries are enforced at the data layer, not just the API layer.
-
----
-
-## Team
-
-**EECS 4413 — Team 8, York University**
 
 ---
 
